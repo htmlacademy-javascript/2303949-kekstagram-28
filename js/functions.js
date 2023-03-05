@@ -6,6 +6,7 @@
 //имяФункции('проверяемая строка', 10); // false
 
 const isLessOrEqual = (string, length) => string.length <= length;
+isLessOrEqual();
 
 // Строка является палиндромом
 //имяФункции('топот'); // true
@@ -24,7 +25,7 @@ const isPalidrom = (string) => {
   }
   return tempString === reverseString;
 };
-
+isPalidrom();
 
 //имяФункции('2023 год');            // 2023
 //имяФункции('ECMAScript 2022');     // 2022
@@ -44,7 +45,7 @@ const extractNumber = (string) => {
   }
   return parseInt(result, 10);
 };
-
+extractNumber();
 
 // Добавочный символ использован один раз
 //имяФункции('1', 2, '0');      // '01'
@@ -69,3 +70,4 @@ const myPadStart = (string, minLength, pad) => {
     : pad.slice(0, actualPad % pad.length) + pad.repeat(actualPad / pad.length)
  + string;
 };
+myPadStart();
