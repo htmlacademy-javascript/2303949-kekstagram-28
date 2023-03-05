@@ -16,10 +16,6 @@ isLessOrEqual();
 //имяФункции('Кекс');  // false
 
 const isPalidrom = (string) => {
-  const tempString = string
-    .toLowerCase() // приводим слово к нижнему знаминателю
-    .replaceAll(' ',''); //производим замену пробелов с строке.
-  let reverseString = '';
  return string.split('').reverse().join('').replaceAll(' ', '').toLowerCase() === string.replaceAll(' ', '').toLowerCase();
 };
 isPalidrom();
