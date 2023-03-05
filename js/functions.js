@@ -20,10 +20,7 @@ const isPalidrom = (string) => {
     .toLowerCase() // приводим слово к нижнему знаминателю
     .replaceAll(' ',''); //производим замену пробелов с строке.
   let reverseString = '';
-  for (let i = tempString.length - 1; i >= 0; i--) {
-    reverseString += tempString.at(i);
-  }
-  return tempString === reverseString;
+ return string.split('').reverse().join('').replaceAll(' ', '').toLowerCase() === string.replaceAll(' ', '').toLowerCase();
 };
 isPalidrom();
 
