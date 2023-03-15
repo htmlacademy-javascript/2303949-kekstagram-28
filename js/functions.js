@@ -15,9 +15,7 @@ isLessOrEqual();
 // Это не палиндром
 //имяФункции('Кекс');  // false
 
-const isPalidrom = (string) => {
- return string.split('').reverse().join('').replaceAll(' ', '').toLowerCase() === string.replaceAll(' ', '').toLowerCase();
-};
+const isPalidrom = (string) => string.split('').reverse().join('').replaceAll(' ', '').toLowerCase() === string.replaceAll(' ', '').toLowerCase();
 isPalidrom();
 
 //имяФункции('2023 год');            // 2023
