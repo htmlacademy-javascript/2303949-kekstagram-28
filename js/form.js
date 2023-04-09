@@ -1,3 +1,4 @@
+import { resetScale } from './scale.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-za-яё0-9]{1,19}$/i;
@@ -25,6 +26,8 @@ const showModal = () => {
 // сама модалка.закрытие
 const hideModal = () => {
   form.reset();
+  resetScale();
+  resetEffects();
   pristine.reset();
   overlay.classList.add('hidden');
   body.classList.add('modal-open');
@@ -70,4 +73,10 @@ pristine.addValidator(
   TAG_ERROR_TEXT
 );
 
+const onFormSubmit = (evt) => {
+  evt.preventDefault();
+  pristine.validate();
+};
+
 fileField.addEventListener('change', onFileInputChange);
+form.addEventListener('submit', onFormSubmit);
