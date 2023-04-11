@@ -77,7 +77,6 @@ const updateSlider = () => {
     step: chosenEffect.step,
     start: chosenEffect.max,
   });
-
   if (isDefault()) {
     hideSlider();
   } else {
@@ -107,6 +106,7 @@ const resetEffects = () => {
   updateSlider();
 };
 
+
 noUiSlider.create(sliderElement, {
   range: {
     min: DEFAULT_EFFECT.min,
@@ -116,7 +116,7 @@ noUiSlider.create(sliderElement, {
   step: DEFAULT_EFFECT.step,
   connect: 'lower',
 });
-hideSlider();
+
 
 effectsElement.addEventListener('change', onEffectsChange);
 sliderElement.noUiSlider.on('update', onSliderUpdate);
