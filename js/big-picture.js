@@ -3,7 +3,7 @@ const AVATAR_HEIGHT = 35;
 const AVATAR_WIDTH = 35;
 
 const bigPictureElement = document.querySelector('.big-picture');
-const bigPictureImageElement = bigPictureElement.querySelector('.big-picture__img img');
+const bigPictureImageElement = bigPictureElement.querySelector('.big-picture__img');
 const likesNumberElement = bigPictureElement.querySelector('.likes-count');
 const commentsNumberElement = bigPictureElement.querySelector('.comments-count');
 const socialCommentsList = bigPictureElement.querySelector('.social__comments');
@@ -69,5 +69,5 @@ const showBigPicture = ({url, likes, comments, description}) => {
   pictureCloseButton.addEventListener('click', closeBigPicture);
 
 };
-
 export { showBigPicture };
+

@@ -68,6 +68,14 @@ const hideSlider = () => {
   sliderContainerElement.classlist.add('hidden');
 };
 
+
+const onSliderUpdate = () => {
+  const sliderValue = sliderElement.noUiSlider.get();
+  imageElement.style.filter = isDefault()
+    ? DEFAULT_EFFECT.style
+    : `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
+  effectLevelElement.value = sliderValue;
+};
 const updateSlider = () => {
   sliderElement.noUiSlider.updateOptions({
     range: {
@@ -77,11 +85,16 @@ const updateSlider = () => {
     step: chosenEffect.step,
     start: chosenEffect.max,
   });
+  sliderElement.noUiSlider.on('update', onSliderUpdate);
   if (isDefault()) {
     hideSlider();
   } else {
     showSlider();
   }
+};
+const resetEffects = () => {
+  chosenEffect = DEFAULT_EFFECT;
+  updateSlider();
 };
 
 const onEffectsChange = (evt) => {
@@ -92,21 +105,6 @@ const onEffectsChange = (evt) => {
   imageElement.className = `effects__preview--${chosenEffect.name}`;
   updateSlider();
 };
-
-const onSliderUpdate = () => {
-  const sliderValue = sliderElement.noUiSlider.get();
-  imageElement.style.filter = isDefault()
-    ? DEFAULT_EFFECT.style
-    : `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
-  effectLevelElement.value = sliderValue;
-};
-
-const resetEffects = () => {
-  chosenEffect = DEFAULT_EFFECT;
-  updateSlider();
-};
-
-
 noUiSlider.create(sliderElement, {
   range: {
     min: DEFAULT_EFFECT.min,
@@ -119,6 +117,6 @@ noUiSlider.create(sliderElement, {
 
 
 effectsElement.addEventListener('change', onEffectsChange);
-sliderElement.noUiSlider.on('update', onSliderUpdate);
+
 
 export { resetEffects };
