@@ -1,22 +1,10 @@
-import { renderGallery } from './gallery.js';
-import { getData, sendData } from './api.js';
-import { showAlert } from './util.js';
-import { setOnFormSubmit, hideModal } from './form.js';
-import { showErrorMessage } from './messages_error.js';
-import { showSucessMessage } from './messages_sucess.js';
-setOnFormSubmit(async (data) => {
-  try {
-    await sendData(data);
-    hideModal();
-    showSucessMessage();
-  } catch {
-    showErrorMessage();
-  }
-});
+import './big-picture.js';
+import './thumbnail.js';
+import './form.js';
+import './scale.js';
+import './effect.js';
+import './gallery.js';
 
-try {
-  const data = await getData();
-  renderGallery(data);
-} catch (err) {
-  showAlert(err.message);
-}
+import { getPictures } from './data.js';
+import { renderGallery } from './gallery.js';
+renderGallery(getPictures());
