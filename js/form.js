@@ -12,7 +12,7 @@ const cancelButton = document.querySelector('#upload-cancel');
 const fileField = document.querySelector('#upload-file');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
-const newLocal = 'img-upload__field-wrapper__error';
+const newLocal = document.querySelector('img-upload__field-wrapper__error');
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -38,7 +38,7 @@ const hideModal = () => {
 
 const isTextFieldFocused = () =>
   document.activeElement === hashtagField ||
-document.activeElement === commentField;
+  document.activeElement === commentField;
 
 //отмена обработчика по keydown в случае фокуса на текстовом поле
 function onDocumentKeydown(evt) {
@@ -80,10 +80,13 @@ pristine.addValidator(
 );
 
 const onFormSubmit = (evt) => {
-  evt.preventDefault();
-  pristine.validate();
+  //evt.preventDefault();
+ // pristine.validate();
 };
 
 fileField.addEventListener('change', onFileInputChange);
 cancelButton.addEventListener('click', onCancelButtonClick);
 form.addEventListener('submit', onFormSubmit);
+
+
+export { onDocumentKeydown, hideModal };
