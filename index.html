@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кекстаграм</title>
-  <script src="functions.js"></script>
 </head>
 
 <body>
@@ -47,7 +47,7 @@
                   <!-- Изменение размера изображения -->
                   <fieldset class="img-upload__scale  scale">
                     <button type="button" class="scale__control  scale__control--smaller">Уменьшить</button>
-                    <input type="text" class="scale__control  scale__control--value" value="55%" title="Image Scale" name="scale" readonly>
+                    <input type="text" class="scale__control  scale__control--value" value="100%" title="Image Scale" name="scale" readonly="readonly">
                     <button type="button" class="scale__control  scale__control--bigger">Увеличить</button>
                   </fieldset>
 
@@ -120,9 +120,10 @@
                     <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
                   </div>
                   <div class="img-upload__field-wrapper">
-                    <textarea class="text__description" name="description" placeholder="Ваш комментарий..."></textarea>
+                    <textarea class="text__description" name="description" placeholder="Ваш комментарий..."
                     data-pristine-maxlength="140"
-                    data-pristine-maxlength-message="комментарий не может быть длиннее 140 символов"
+                    data-pristine-maxlength-message="Комментарий не может быть длиннее 140 символов"
+                  ></textarea>
                   </div>
                 </fieldset>
 

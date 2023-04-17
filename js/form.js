@@ -1,3 +1,5 @@
+import { resetScale } from './scale.js';
+import { resetEffects } from './effect.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-za-яё0-9]{1,19}$/i;
@@ -6,11 +8,12 @@ const TAG_ERROR_TEXT = 'Неправильно заполнены хэштеги
 const form = document.querySelector('.img-upload__form');
 const overlay = document.querySelector('.img-upload__overlay');
 const body = document.querySelector('body');
+const cancelButton = document.querySelector('#upload-cancel');
 const fileField = document.querySelector('#upload-file');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
+const newLocal = document.querySelector('img-upload__field-wrapper__error');
 
-const newLocal = 'img-upload__field-wrapper__error';
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
@@ -25,15 +28,17 @@ const showModal = () => {
 // сама модалка.закрытие
 const hideModal = () => {
   form.reset();
+  resetScale();
+  resetEffects();
   pristine.reset();
   overlay.classList.add('hidden');
   body.classList.add('modal-open');
-  document.addEventListener('keydown', onDocumentKeydown);
+  document.removeEventListener('keydown', onDocumentKeydown);
 };
 
 const isTextFieldFocused = () =>
   document.activeElement === hashtagField ||
-document.activeElement === commentField;
+  document.activeElement === commentField;
 
 //отмена обработчика по keydown в случае фокуса на текстовом поле
 function onDocumentKeydown(evt) {
@@ -42,6 +47,10 @@ function onDocumentKeydown(evt) {
     hideModal();
   }
 }
+
+const onCancelButtonClick = () => {
+  hideModal();
+};
 // по событию change - обработчик(показать модалку)
 const onFileInputChange = () => {
   showModal();
@@ -70,4 +79,14 @@ pristine.addValidator(
   TAG_ERROR_TEXT
 );
 
+const onFormSubmit = (evt) => {
+  evt.preventDefault();
+  pristine.validate();
+};
+
 fileField.addEventListener('change', onFileInputChange);
+cancelButton.addEventListener('click', onCancelButtonClick);
+form.addEventListener('submit', onFormSubmit);
+
+
+export { onDocumentKeydown, hideModal };
