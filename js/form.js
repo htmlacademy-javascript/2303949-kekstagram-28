@@ -80,8 +80,8 @@ pristine.addValidator(
 );
 
 const onFormSubmit = (evt) => {
-  //evt.preventDefault();
- // pristine.validate();
+  evt.preventDefault();
+  pristine.validate();
 };
 
 fileField.addEventListener('change', onFileInputChange);
